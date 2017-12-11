@@ -1,0 +1,38 @@
+﻿@using Lab3.Models;
+@model ShowFlightModel;
+@using Lab3.Models.FlightsViewModels;
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>Do you want to delete this flight?</h3>
+<div class="row">
+    <div class="col-md-3">
+        <form method="post">
+            <fieldset>
+                <h4>Company</h4>
+                <p><b>@Model.Company</b></p>
+                <h4>Plane</h4>
+                <p><b>@Model.Plane</b></p>
+                <h4>From</h4>
+                <p><b>@Model.HomeAirport</b></p>
+                <h4>To</h4>
+                <p><b>@Model.DestinationAirport</b></p>
+                <h4>Departure</h4>
+                <p><b>@Model.Departure</b></p>
+                <h4>Arrival</h4>
+                <p><b>@Model.Arrival</b></p>
+                <br />
+            </fieldset>
+            <input name="id" value="@Model.Id" type="hidden" />
+            <ul class="list-inline">
+                <li><input type="button" class="btn btn-default" value="Cancel" onclick="location.href='@Url.Action("Index")';" /></li>
+                <li><button type="submit" class="btn btn-danger">Delete</button></li>
+            </ul>
+        </form>
+
+    </div>
+</div>
+
+

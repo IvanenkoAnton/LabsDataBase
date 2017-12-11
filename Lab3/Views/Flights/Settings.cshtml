@@ -1,0 +1,25 @@
+﻿@using Lab3.Models.FlightsViewModels;
+@model Settings
+@{
+    ViewData["Title"] = "Settings";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <h2>@ViewData["Title"]</h2>
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div class="form-group">
+                <label asp-for="UseTrigger"></label>
+                <input asp-for="UseTrigger" />
+            </div>
+            <div class="form-group">
+                <label asp-for="EventTime"></label>
+                <input asp-for="EventTime" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Edit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

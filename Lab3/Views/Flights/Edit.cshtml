@@ -1,0 +1,40 @@
+﻿@using Lab3.Models.FlightsViewModels;
+@model FlightViewModel;
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="row">
+    <div class="col-md-5">
+        <h2>@ViewData["Title"]</h2>
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AirplaneId"></label>
+                @Html.DropDownListFor(Model => Model.AirplaneId, ViewBag.Airplanes as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="AviaCompanyId"></label>
+                @Html.DropDownListFor(Model => Model.AviaCompanyId, ViewBag.Companies as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="HomeAirportId"></label>
+                @Html.DropDownListFor(Model => Model.HomeAirportId, ViewBag.Airports as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationAirportId"></label>
+                @Html.DropDownListFor(Model => Model.DestinationAirportId, ViewBag.Airports as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Departure"></label>
+                <input asp-for="Departure" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Arrival"></label>
+                <input asp-for="Arrival" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Edit</button>
+            </div>
+        </form>
+    </div>
+</div>

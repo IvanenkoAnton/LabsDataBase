@@ -1,0 +1,113 @@
+﻿@using Lab3.Models;
+@model LookAttrViewModel;
+@using Lab3.Models.FlightsViewModels;
+@{
+    ViewData["Title"] = "Flights";
+    List<ShowFlightModel> flights = (List<ShowFlightModel>)ViewBag.models;
+}
+
+<div class="row">
+    <h2>@ViewData["Title"]</h2>
+    <form method="post">
+        <div class="col-md-3">
+            <label asp-for="CompanyName"></label>
+            <input asp-for="CompanyName" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="CompanyCountry"></label>
+            <input asp-for="CompanyCountry" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="PlaneModel"></label>
+            <input asp-for="PlaneModel" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="PlaneSeatsFrom"></label>
+            <input asp-for="PlaneSeatsFrom" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="PlaneSeatsTo"></label>
+            <input asp-for="PlaneSeatsTo" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="AirportCountryFrom"></label>
+            <input asp-for="AirportCountryFrom" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="AirportCountryTo"></label>
+            <input asp-for="AirportCountryTo" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="FlightDate"></label>
+            <input asp-for="FlightDate" class="form-control" />
+        </div>
+        </div>
+        <div class="form-group col-md-12" >
+            <br>
+            <ul class="list-inline">
+                <li><input type="button" class="btn btn-default" value="Cancel" onclick="location.href='@Url.Action("Index")';" /></li>
+                <li><button type="submit" class="btn btn-success">Find</button></li>
+                <li><input type="button" class="btn btn-default" value="Settings" onclick="location.href='@Url.Action("Settings")';" /></li>
+                <li><input type="button" class="btn btn-default" value="Load BackUp" onclick="location.href='@Url.Action("ReturnBackUp")';" /></li>
+            </ul>
+        </div>
+    </form>
+    <div class="col-md-12">
+        @Html.ActionLink("Add new flight", "Add")
+        @if (flights.Count() > 0) {
+            <table class="table">
+                <tr>
+                    <th>
+                        Company
+                    </th>
+                    <th>
+                        Plane
+                    </th>
+                    <th>
+                        From
+                    </th>
+                    <th>
+                        To
+                    </th>
+                    <th>
+                        Departure
+                    </th>
+                    <th>
+                        Arrival
+                    </th>
+                    <th>
+                        Controls
+                    </th>
+                </tr>
+
+                @foreach (var item in flights) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Company)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Plane)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HomeAirport)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DestinationAirport)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Departure)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Arrival)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new {  id = item.Id  }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+            }
+            </table>
+        }        
+    </div>
+</div>
+
